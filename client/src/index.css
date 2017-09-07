@@ -3,3 +3,14 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
+
+.row{
+  width:90%;
+  display:flex;
+  flex-wrap:wrap;
+  text-align:center;
+  margin:auto;
+}
+.cardImage{
+  width:100%;
+}

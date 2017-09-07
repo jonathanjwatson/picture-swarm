@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
 
@@ -56,7 +56,7 @@ class GlobalNav extends Component {
       return (
         <Nav>
           <Link to="/">
-            <h1>Tunr</h1>
+            <h1>Picture Swarm</h1>
           </Link>
           <div>
             <span>Signed In As: {this.state.user.email}</span>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PictureIndividualDownloadButton from './PictureIndividualDownloadButton';
 
 class PictureIndividual extends Component {
   constructor() {
@@ -28,11 +29,13 @@ class PictureIndividual extends Component {
   } 
 
   render() {
+    const picture = this.state.picture;
     return (
       <div>
         <img src={this.state.picture.url} alt="" />
         <h1>{this.state.picture.title}</h1>
         <p>{this.state.picture.description}</p>
+        <PictureIndividualDownloadButton {...picture} />
       </div>
     );
   }

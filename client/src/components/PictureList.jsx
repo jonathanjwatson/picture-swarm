@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import styled from "styled-components";
+
+const Card = styled.div`
+width:30%;
+text-align:center;
+margin:auto;
+display:block;
+`
 
 class PictureList extends Component {
   constructor(){
@@ -36,11 +44,18 @@ class PictureList extends Component {
     return (
       <div>
         <h1>All Pictures</h1>
-        {this.state.pictures.map(picture => (
+        <div className="row">
+        {this.state.pictures.map((picture, i) => (
+          <Card key={i}>
           <div>
-            <Link to={`/picture/${picture.id}`} >{picture.title}</Link> 
+            <img className="cardImage" src={`${picture.url}`} />
           </div>
+          <div>
+            <Link to={`/picture/${picture.id}`}>{picture.title}</Link> 
+          </div>
+          </Card>
         ))}
+        </div>
       </div>
     );
   }

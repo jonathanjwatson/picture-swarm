@@ -36,6 +36,11 @@ a:hover{
   color: white;
   border: none;
 }
+.button-primary{
+  background-color: #3AA9EA;
+  color: white;
+  border: none;
+}
 .picture-show-row{
   padding-top:2em;
 }

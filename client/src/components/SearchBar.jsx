@@ -33,7 +33,7 @@ class SearchBar extends Component {
                 />
                 </div>
                 <div>
-                <input type="submit" className="button button-default"/>
+                <input type="submit" className="button button-primary" value="Search"/>
                 </div>
             </div>
           </div>

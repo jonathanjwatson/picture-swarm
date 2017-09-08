@@ -51,6 +51,9 @@ class PictureList extends Component {
     return (
       <div>
       <div className="row">
+        <SearchBar _handleSubmit={this._handleSubmit}/>
+        </div>
+      <div className="row">
         <div className="row">
         {this.state.pictures.map((picture, i) => (
           <div className="card" key={i}>
@@ -63,9 +66,6 @@ class PictureList extends Component {
           </div>
         ))}
         </div>
-        </div>
-        <div className="row">
-        <SearchBar _handleSubmit={this._handleSubmit}/>
         </div>
       </div>
     );

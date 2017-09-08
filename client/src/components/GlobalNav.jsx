@@ -9,6 +9,7 @@ const Nav = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 2.5%;
+  margin-bottom:1em;
   background-color: rgba(0, 51, 82, 1);
   box-shadow: 0px 1px 6px black;
   a {
@@ -71,7 +72,7 @@ class GlobalNav extends Component {
     return (
       <Nav>
         <Link to="/">
-          <h1>Tunr</h1>
+          <h1>Picture Swarm</h1>
         </Link>
         <div>
           <Link to="/signup">Sign Up</Link>

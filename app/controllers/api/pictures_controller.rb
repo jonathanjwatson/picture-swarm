@@ -1,6 +1,11 @@
 class Api::PicturesController < ApplicationController
     def index
         @pictures = Picture.all
+        if params[:search]
+          @pictures = Picture.search(params[:search]).order("created_at DESC")
+        else
+          @pictures = Picture.all
+        end
         render json: @pictures
       end
     

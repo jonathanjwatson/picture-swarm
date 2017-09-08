@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import styled from "styled-components";
+import SearchBar from './SearchBar';
 
 
 class PictureList extends Component {
@@ -40,7 +40,7 @@ class PictureList extends Component {
       <div className="row">
         <div className="row">
         {this.state.pictures.map((picture, i) => (
-          <div className="card">
+          <div className="card" key={i}>
             <img className="cardImage" src={`${picture.url}`} />
           <div className="card-block">
           <h4 className="card-title">{picture.title}</h4>
@@ -50,6 +50,9 @@ class PictureList extends Component {
           </div>
         ))}
         </div>
+        </div>
+        <div className="row">
+        <SearchBar />
         </div>
       </div>
     );

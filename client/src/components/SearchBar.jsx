@@ -16,17 +16,19 @@ class SearchBar extends Component {
     }
     _handleSubmit = (e) => {
         e.preventDefault();
+        console.log("Hit the search button")
         const payload = this.state;
         console.log(payload);
         axios.get(`/api/pictures/?search=${this.state.searchText}`, payload)
         .then((res) => {
-            console.log("Thanks!");
+            console.log(res);
         }).catch(err => console.log(err));
         
     }
     render() {
         return (
             <div className="row search-bar">
+            <form onSubmit={this._handleSubmit}>
             <div>
             <div className="label">
               <label htmlFor="email"></label>
@@ -42,6 +44,7 @@ class SearchBar extends Component {
                 <input type="submit" />
             </div>
           </div>
+          </form>
             </div>
         );
     }

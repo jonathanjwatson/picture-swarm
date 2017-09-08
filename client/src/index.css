@@ -3,16 +3,24 @@ body {
   padding: 0;
   font-family: sans-serif;
 }
-
+a:hover{
+  color:white;
+  text-decoration: none;
+}
 .row{
-  width:90%;
-  display:flex;
-  flex-wrap:wrap;
   text-align:center;
   margin:auto;
 }
+.card{
+  max-width:400px;
+  height:100%;
+}
 .cardImage{
-  width:100%;
+  max-height:320px;
+  height:50%;
+}
+.card-block{
+  padding-bottom:1em;
 }
 .button {
   padding: 15px 32px;
@@ -20,11 +28,20 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
-  border-radius:4px;
+  border-radius:2px;
   font-size:2rem;
 }
 .button-default{
   background-color: #003352;
   color: white;
   border: none;
+}
+.picture-show-row{
+  padding-top:2em;
+}
+.picture-show-image{
+  width:100%;
+}
+.picture-show-description{
+  text-align:left;
 }

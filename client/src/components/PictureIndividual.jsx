@@ -31,11 +31,19 @@ class PictureIndividual extends Component {
   render() {
     const picture = this.state.picture;
     return (
-      <div>
-        <img src={this.state.picture.url} alt="" />
+      <div className="row picture-show-row">
+      <div className="col-sm-1">
+      </div>
+      <div className="col-sm-4">
+        <img className="picture-show-image" src={this.state.picture.url} alt={this.state.picture.title} />
+      </div>
+      <div className="col-sm-7 picture-show-description">
         <h1>{this.state.picture.title}</h1>
         <p>{this.state.picture.description}</p>
         <PictureIndividualDownloadButton {...picture} />
+        </div>
+        <div className="col-sm-1">
+        </div>
       </div>
     );
   }

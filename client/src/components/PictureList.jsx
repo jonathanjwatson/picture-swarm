@@ -30,6 +30,19 @@ class PictureList extends Component {
     }
     
   }
+  _handleSubmit = (e, searchText) => {
+      e.preventDefault();
+      console.log("Hit the search button")
+      const payload = searchText;
+      console.log(payload);
+      axios.get(`/api/pictures/?search=${searchText}`, payload)
+      .then((res) => {
+          console.log(res.data);
+          const pictures = res.data
+          this.setState({pictures})
+      }).catch(err => console.log(err));
+      
+  }
 
   render() {
     if (this.state.error){
@@ -52,7 +65,7 @@ class PictureList extends Component {
         </div>
         </div>
         <div className="row">
-        <SearchBar />
+        <SearchBar _handleSubmit={this._handleSubmit}/>
         </div>
       </div>
     );

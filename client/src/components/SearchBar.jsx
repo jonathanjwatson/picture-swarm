@@ -10,25 +10,14 @@ class SearchBar extends Component {
     }
     _handleChange = (e) => {
         const attributeValue = e.target.value;
-        let searchText = {...this.state.searchText};
+        let searchText = this.state.searchText;
         searchText = attributeValue;
         this.setState({ searchText })
-    }
-    _handleSubmit = (e) => {
-        e.preventDefault();
-        console.log("Hit the search button")
-        const payload = this.state;
-        console.log(payload);
-        axios.get(`/api/pictures/?search=${this.state.searchText}`, payload)
-        .then((res) => {
-            console.log(res);
-        }).catch(err => console.log(err));
-        
     }
     render() {
         return (
             <div className="row search-bar">
-            <form onSubmit={this._handleSubmit}>
+            <form onSubmit={(e) => this.props._handleSubmit(e, this.state.searchText)}>
             <div>
             <div className="label">
               <label htmlFor="email"></label>

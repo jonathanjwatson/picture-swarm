@@ -22,7 +22,8 @@ class SearchBar extends Component {
             <div className="label">
               <label htmlFor="email"></label>
             </div>
-            <div>
+            <div className="row">
+                <div className="col-sm-8">
                 <input 
                     type="text" 
                     onChange={this._handleChange} 
@@ -30,7 +31,10 @@ class SearchBar extends Component {
                     name="email"
                     placeholder="Search for an image . . ."
                 />
-                <input type="submit" />
+                </div>
+                <div>
+                <input type="submit" className="button button-default"/>
+                </div>
             </div>
           </div>
           </form>

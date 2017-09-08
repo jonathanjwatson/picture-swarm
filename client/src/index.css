@@ -23,7 +23,7 @@ a:hover{
   padding-bottom:1em;
 }
 .button {
-  padding: 15px 32px;
+  padding: .2em 1.3em;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -48,4 +48,13 @@ a:hover{
 .search-bar{
   padding-top:1em;
   padding-bottom:2em;
+}
+.search-bar input[type=text]{
+  height:3.8em;
+  width:25em;
+  /* border: 1px solid; */
+  padding:0;
+}
+.search-bar input[type=submit]{
+  margin-left:1px;
 }

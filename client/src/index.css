@@ -15,6 +15,7 @@ a:hover{
   width:400px;
   /* min-width:400px; */
   /* height:100%; */
+  margin: 0 auto;
 }
 .cardImage{
   height:320px;
@@ -62,4 +63,7 @@ a:hover{
 }
 .search-bar input[type=submit]{
   margin-left:1px;
+}
+.picture-list{
+  margin:auto;
 }

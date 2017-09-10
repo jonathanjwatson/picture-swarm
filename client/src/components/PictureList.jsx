@@ -53,8 +53,7 @@ class PictureList extends Component {
       <div className="row">
         <SearchBar _handleSubmit={this._handleSubmit}/>
         </div>
-      <div className="row">
-        <div className="row">
+      <div className="row picture-list">
         {this.state.pictures.map((picture, i) => (
           <div className="card" key={i}>
             <img className="cardImage" src={`${picture.url}`} alt={`${picture.title}`}/>
@@ -65,7 +64,6 @@ class PictureList extends Component {
           </div>
           </div>
         ))}
-        </div>
         </div>
       </div>
     );

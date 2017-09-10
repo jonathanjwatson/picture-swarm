@@ -5,10 +5,13 @@ class PictureNew extends Component {
 constructor() {
     super();
     this.state = {
-        picture:{}
+        createPermission: false,
+        picture:{
+        }
     }
 }
 componentWillMount() {
+    this._checkAuth()
   }
   _handleChange = (e) => {
     const attributeName = e.target.name;;
@@ -27,6 +30,38 @@ _handleSubmit = (e) => {
         console.log(res)
     }).catch(err => console.log(err));
 }
+_checkAuth = async () => {
+    const accessToken = localStorage.getItem("access-token")
+    const client = localStorage.getItem("client")
+    const uid = localStorage.getItem("uid")
+    const validateTokenPayload = {
+      accessToken,
+      client,
+      uid
+    }
+    try {
+      const response = await axios.get(`/auth/validate_token`, {
+        params: {
+          accessToken,
+          client,
+          uid
+        }
+      })
+      await console.log(response.data.data.id)
+      let createPermission = this.state.createPermission
+      createPermission = response.data.success;
+      let pictureId = this.state.picture.userId;
+      pictureId = response.data.data.id;
+      this.setState({createPermission})
+      this.setState({picture: {user_id: pictureId}});
+      return response.data
+    }
+    catch (err) {
+      await console.log(err)
+      return err.message
+    }
+  
+  }
     render() {
         return (
             <div className="createPicture">
@@ -40,7 +75,7 @@ _handleSubmit = (e) => {
                             onChange={this._handleChange} 
                             value={this.state.picture.title} 
                             name="title"
-                            placeholder="Edit Picture Title"
+                            placeholder="Picture Title"
                         />
                 </div>
                 <div className="form-field">
@@ -50,7 +85,7 @@ _handleSubmit = (e) => {
                             onChange={this._handleChange} 
                             value={this.state.picture.description} 
                             name="description"
-                            placeholder="Edit Picture Description"
+                            placeholder="Picture Description"
                         />
                 </div>
                 <div className="form-field">
@@ -60,7 +95,7 @@ _handleSubmit = (e) => {
                             onChange={this._handleChange} 
                             value={this.state.picture.url} 
                             name="url"
-                            placeholder="Edit Picture URL"
+                            placeholder="Picture URL"
                         />
                 </div>
                 <button className="primary">Create New Picture</button>

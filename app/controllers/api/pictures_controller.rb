@@ -10,8 +10,8 @@ class Api::PicturesController < ApplicationController
       end
     
       def create
-        @Picture = Picture.create!(Picture_params)
-        redirect_to Picture_path(@Picture)
+        @Picture = Picture.create!(picture_params)
+        render json: @Picture
       end
     
       def show

@@ -12,12 +12,12 @@ a:hover{
   margin:auto;
 }
 .card{
-  max-width:400px;
-  height:100%;
+  width:400px;
+  /* min-width:400px; */
+  /* height:100%; */
 }
 .cardImage{
-  max-height:320px;
-  height:50%;
+  height:320px;
 }
 .card-block{
   padding-bottom:1em;

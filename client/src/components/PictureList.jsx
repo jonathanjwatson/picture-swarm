@@ -61,7 +61,7 @@ class PictureList extends Component {
           <div className="card-block">
           <h4 className="card-title">{picture.title}</h4>
 
-            <Link to={`/picture/${picture.id}`} className="button button-default">Download</Link> 
+            <Link to={`/picture/${picture.id}`} className="button button-default">See More</Link> 
           </div>
           </div>
         ))}

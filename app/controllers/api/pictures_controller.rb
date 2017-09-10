@@ -21,8 +21,8 @@ class Api::PicturesController < ApplicationController
     
       def update
         @Picture = Picture.find(params[:id])
-        @Picture.update!(Picture_params)
-        redirect_to Picture_path(@Picture)
+        @Picture.update_attributes(picture_params)
+        render json: @Picture
       end
     
       def destroy
@@ -33,7 +33,7 @@ class Api::PicturesController < ApplicationController
     
       private
     
-      def Picture_params
-        params.require(:Picture).permit(:title, :url, :description)
+      def picture_params
+        params.require(:picture).permit(:title, :url, :description)
       end
 end

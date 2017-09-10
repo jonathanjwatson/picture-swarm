@@ -57,7 +57,7 @@ class PictureList extends Component {
         <div className="row">
         {this.state.pictures.map((picture, i) => (
           <div className="card" key={i}>
-            <img className="cardImage" src={`${picture.url}`} />
+            <img className="cardImage" src={`${picture.url}`} alt={`${picture.title}`}/>
           <div className="card-block">
           <h4 className="card-title">{picture.title}</h4>
 

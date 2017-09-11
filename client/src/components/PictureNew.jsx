@@ -16,6 +16,7 @@ componentWillMount() {
     this._checkAuth()
   }
 
+  
   handleDrop = files => {
     // Push all the axios request promise into a single array
     const uploaders = files.map(file => {

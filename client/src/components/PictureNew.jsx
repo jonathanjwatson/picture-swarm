@@ -90,6 +90,7 @@ _checkAuth = async () => {
         }
       })
       await console.log(response.data.data.id)
+      console.log(response)
       let createPermission = this.state.createPermission
       createPermission = response.data.success;
       let pictureId = this.state.picture.userId;

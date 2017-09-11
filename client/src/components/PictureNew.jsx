@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Dropzone from 'react-dropzone';
+
 
 class PictureNew extends Component {
 constructor() {
@@ -12,6 +14,44 @@ constructor() {
 }
 componentWillMount() {
     this._checkAuth()
+  }
+
+  handleDrop = files => {
+    // Push all the axios request promise into a single array
+    const uploaders = files.map(file => {
+      // Initial FormData
+      const formData = new FormData();
+      formData.append("file", file);
+      formData.append("tags", `codeinfuse, medium, gist`);
+      formData.append("upload_preset", process.env.REACT_APP_UPLOADPRESET); // Replace the preset name with your own
+      formData.append("api_key", process.env.REACT_APP_CLOUDINARYAPIKEY); // Replace API key with your own Cloudinary key
+      formData.append("timestamp", (Date.now() / 1000) | 0);
+      
+      // Make an AJAX upload request using Axios (replace Cloudinary URL below with your own)
+      return axios.post("https://api.cloudinary.com/v1_1/pictureswarm/image/upload", formData, {
+        transformRequest: [function (data, headers) {
+            // Do whatever you want to transform the data
+            console.log(headers)
+            delete headers['access-token']
+            delete headers['uid']
+            delete headers['client']
+            delete headers['expiry']
+            delete headers['token-type']
+            delete headers.common
+            return data;
+          }],
+        headers: { "X-Requested-With": "XMLHttpRequest"},
+      }).then(response => {
+        const data = response.data;
+        const fileURL = data.secure_url // You should store this URL for future references in your app
+        console.log(data);
+      })
+    });
+  
+    // Once all the files are uploaded 
+    axios.all(uploaders).then(() => {
+      // ... perform after upload is successful operation
+    });
   }
   _handleChange = (e) => {
     const attributeName = e.target.name;;
@@ -98,6 +138,13 @@ _checkAuth = async () => {
                             placeholder="Picture URL"
                         />
                 </div>
+                <Dropzone 
+                onDrop={this.handleDrop} 
+                multiple 
+                accept="image/*" 
+                >
+                <p>Drop your files or click here to upload</p>
+                </Dropzone>
                 <button className="primary">Create New Picture</button>
                 </form>
             </div>

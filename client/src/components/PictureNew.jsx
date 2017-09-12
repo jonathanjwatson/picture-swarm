@@ -96,7 +96,7 @@ _checkAuth = async () => {
       await console.log(response.data.data.id)
       console.log(response)
       let createPermission = this.state.createPermission
-      createPermission = response.data.success;
+      createPermission = response.data.data.uploader;
       let pictureId = this.state.picture.userId;
       pictureId = response.data.data.id;
       this.setState({createPermission})
@@ -113,6 +113,13 @@ _checkAuth = async () => {
         if(this.state.redirect) {
             const id=this.state.picture.id;
             return <Redirect to={`/picture/${id}`} />
+        }
+        if(!this.state.createPermission) {
+            return (
+                <div>
+                    You do not have permission to create new photos. Please log in.
+                </div>
+            )
         }
         return (
             <div className="createPicture">

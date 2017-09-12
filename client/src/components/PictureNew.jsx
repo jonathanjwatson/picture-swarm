@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Dropzone from 'react-dropzone';
+import { Redirect } from 'react-router-dom';
 
 
 class PictureNew extends Component {
@@ -9,7 +10,8 @@ constructor() {
     this.state = {
         createPermission: false,
         picture:{
-        }
+        },
+        redirect: false
     }
 }
 componentWillMount() {
@@ -70,6 +72,8 @@ _handleSubmit = (e) => {
     .then((res) => {
         console.log("success")
         console.log(res)
+
+        this.setState({redirect: true, picture: res.data})
     }).catch(err => console.log(err));
 }
 _checkAuth = async () => {
@@ -106,6 +110,10 @@ _checkAuth = async () => {
   
   }
     render() {
+        if(this.state.redirect) {
+            const id=this.state.picture.id;
+            return <Redirect to={`/picture/${id}`} />
+        }
         return (
             <div className="createPicture">
             <div className="row">

@@ -1,5 +1,5 @@
 class Api::UsersController < ApplicationController
-before_action :
+# before_action :
 
     def index
         current_user.admin?

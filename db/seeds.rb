@@ -9,6 +9,7 @@
 Picture.destroy_all
 User.destroy_all
 Tag.destroy_all
+PictureTag.destroy_all
 
 admin = User.new
 admin.email = 'jonathanwatson1@gmail.com'
@@ -24,3 +25,6 @@ leavecs = Picture.create({title: "Fall Leaves", user_id: admin.id, url: "https:/
 tagOne = Tag.create({name: "Banana"})
 tagTwo = Tag.create({name: "Sunset"})
 tagThree = Tag.create({name: "Food"})
+
+sunset_tags = PictureTag.create({picture_id: sunset.id, tag_id: tagOne.id})
+sunset_tags2 = PictureTag.create({picture_id: sunset.id, tag_id: tagTwo.id})

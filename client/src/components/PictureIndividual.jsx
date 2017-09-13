@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import PictureIndividualDownloadButton from './PictureIndividualDownloadButton';
+import PictureIndividualSignUpLogIn from './PictureIndividualSignUpLogIn';
 
 class PictureIndividual extends Component {
   constructor() {
@@ -70,7 +71,8 @@ _checkAuth = async () => {
       <div className="col-sm-7 picture-show-description">
         <h1>{this.state.picture.title}</h1>
         <p>{this.state.picture.description}</p>
-        <PictureIndividualDownloadButton {...picture} />
+        {this.state.downloadPermission ? <PictureIndividualDownloadButton {...picture} /> : <PictureIndividualSignUpLogIn {...picture} />}
+        
         </div>
         <div className="col-sm-1">
         </div>

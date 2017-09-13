@@ -16,7 +16,6 @@ constructor() {
 }
 componentWillMount() {
     this._checkAuth()
-    console.log(process.env)
   }
 
   
@@ -48,7 +47,11 @@ componentWillMount() {
       }).then(response => {
         const data = response.data;
         const fileURL = data.secure_url // You should store this URL for future references in your app
-        console.log(data);
+        let uploadedPictureUrl = data.url
+        let picture = {...this.state.picture}
+        picture.url = uploadedPictureUrl
+        this.setState({picture})
+
       })
     });
   
@@ -93,7 +96,7 @@ _checkAuth = async () => {
           uid
         }
       })
-      await console.log(response.data.data.id)
+      await
       console.log(response)
       let createPermission = this.state.createPermission
       createPermission = response.data.data.uploader;
@@ -144,16 +147,6 @@ _checkAuth = async () => {
                             value={this.state.picture.description} 
                             name="description"
                             placeholder="Picture Description"
-                        />
-                </div>
-                <div className="form-field">
-                <label htmlFor="url">Picture URL: </label>
-                        <input 
-                            type="text" 
-                            onChange={this._handleChange} 
-                            value={this.state.picture.url} 
-                            name="url"
-                            placeholder="Picture URL"
                         />
                 </div>
                 <Dropzone 

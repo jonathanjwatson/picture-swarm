@@ -21,7 +21,8 @@ _signIn = async (e) => {
   }
   const response = await axios.post('/auth/sign_in', payload);
   setAxiosHeaders(response.headers);
-  this.setState({redirect: true})
+  // this.setState({redirect: true})
+  this.props.history.goBack()
 }
 
  _handleChange = (e) => {

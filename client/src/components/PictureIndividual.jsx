@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 import PictureIndividualDownloadButton from './PictureIndividualDownloadButton';
 import PictureIndividualSignUpLogIn from './PictureIndividualSignUpLogIn';
 
@@ -8,7 +9,8 @@ class PictureIndividual extends Component {
     super();
     this.state = {
       downloadPermission: false,
-      picture: {}
+      picture: {}, 
+      userId: ''
     };
   }
 
@@ -46,10 +48,11 @@ _checkAuth = async () => {
         uid
       }
     })
-    await console.log(response.data.success)
+    await console.log(response.data.data.id)
     let downloadPermission = this.state.downloadPermission
     downloadPermission = response.data.success;
     this.setState({downloadPermission})
+    this.setState({userId: response.data.data.id})
     return response.data
   }
   catch (err) {
@@ -62,6 +65,16 @@ _checkAuth = async () => {
   render() {
     const picture = this.state.picture;
     return (
+      <div>
+      <div className="row picture-show-edit-row">
+      <div className="col-sm-11">
+      </div>
+      <div className="col-sm-1">
+      {this.state.picture.user_id === this.state.userId ? 
+      <Link to={`/picture/${this.state.picture.id}/edit`}>Edit</Link>
+      : null }
+      </div>
+      </div>
       <div className="row picture-show-row">
       <div className="col-sm-1">
       </div>
@@ -76,6 +89,7 @@ _checkAuth = async () => {
         </div>
         <div className="col-sm-1">
         </div>
+      </div>
       </div>
     );
   }

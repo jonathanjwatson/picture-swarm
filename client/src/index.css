@@ -45,6 +45,9 @@ a:hover{
 .picture-show-row{
   padding-top:2em;
 }
+.picture-show-edit-row{
+  text-align: right;
+}
 .picture-show-image{
   width:100%;
 }

@@ -23,7 +23,9 @@ class PictureIndividual extends Component {
   _fetchpictures = async (pictureId) => {
     try {
       const response = await axios.get(`/api/pictures/${pictureId}`)
+      console.log(response)
       await this.setState({picture: response.data});
+      
       return response.data;
     }
     catch (err) {

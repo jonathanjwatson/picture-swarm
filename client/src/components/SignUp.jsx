@@ -68,7 +68,7 @@ class SignUp extends Component {
         
          </div>
          <div>
-         <button className="button button-primary">Sign Up</button>
+         <input type="submit" className="button button-primary" value="Sign Up"/>
          </div>
          <div>
          <Link to="/signin">Already have an account? Sign in now</Link>

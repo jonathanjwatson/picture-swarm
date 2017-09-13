@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+import {Redirect} from 'react-router-dom';
 
 const CustomNav = styled.div`
   width: 100%;
@@ -30,7 +31,8 @@ class GlobalNav extends Component {
     super();
     this.state = {
       user: {},
-      loggedIn: false
+      loggedIn: false,
+      redirect: false
     };
   }
 
@@ -53,10 +55,16 @@ class GlobalNav extends Component {
     console.log("CLICK");
     const response = await axios.delete("/auth/sign_out");
     //Forces refresh of browser
+    // win
+    const redirect = !this.state.redirect
+    this.setState({redirect})
     window.location.reload();
   };
 
   render() {
+    if (this.state.redirect) {
+      return <Redirect to="/" />
+    }
     if (this.state.loggedIn) {
       return (
         <CustomNav>

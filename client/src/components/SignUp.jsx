@@ -24,7 +24,8 @@ class SignUp extends Component {
    console.log(payload)
    const response = await axios.post('/auth', payload);
    setAxiosHeaders(response.headers);
-   this.setState({redirect: true})
+   this.props.history.goBack()
+  //  this.setState({redirect: true})
  }
 
  _signIn = (e) => {
@@ -57,9 +58,12 @@ class SignUp extends Component {
            <label htmlFor="password">Confirm Password: </label>
            <input onChange={this._handleChange} type="text" name="password_confirmation" value={this.state.password_confirmation} />
          </div>
-         
-         <button>Sign Up</button>
-         <Link to="/signin">Sign In</Link>
+         <div>
+         <button className="button button-primary">Sign Up</button>
+         </div>
+         <div>
+         <Link to="/signin">Already have an account? Sign in now</Link>
+         </div>
        </form>
      </div>
    );

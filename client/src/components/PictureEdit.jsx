@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import {Redirect} from 'react-router-dom';
 
 class PictureEdit extends Component {
 constructor() {
     super();
     this.state = {
-        picture:{}
+        picture:{},
+        redirect: false
     }
 }
 componentWillMount() {
@@ -38,9 +40,14 @@ _handleSubmit = (e) => {
     axios.put(`/api/pictures/${this.state.picture.id}`, payload)
     .then((res) => {
         console.log("success")
+        this.setState({redirect: true, picture: res.data})
     }).catch(err => console.log(err));
 }
     render() {
+        if(this.state.redirect) {
+            const id=this.state.picture.id;
+            return <Redirect to={`/picture/${id}`} />
+        }
         return (
             <div className="editPicture">
             <div className="row">

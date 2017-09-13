@@ -156,7 +156,7 @@ _checkAuth = async () => {
                 >
                 <p>Drop your files or click here to upload</p>
                 </Dropzone>
-                <button className="primary">Create New Picture</button>
+                <button className="button button-primary">Create New Picture</button>
                 </form>
             </div>
             </div>

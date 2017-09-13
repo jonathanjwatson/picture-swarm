@@ -17,16 +17,21 @@ class SignUp extends Component {
  _signUp = async (e) => {
    e.preventDefault();
    const payload = {
-     email: this.state.email,
-     password: this.state.password,
-     password_confirmation: this.state.password_confirmation
+      email: this.state.email,
+      password: this.state.password,
+      password_confirmation: this.state.password_confirmation
+    }
+    console.log(payload)
+   try {
+    const response = await axios.post('/auth', payload);
+    setAxiosHeaders(response.headers);
+    this.props.history.goBack()
    }
-   console.log(payload)
-   const response = await axios.post('/auth', payload);
-   setAxiosHeaders(response.headers);
-   this.props.history.goBack()
-  //  this.setState({redirect: true})
- }
+   catch(err) {
+     await console.log(err)
+     return err.message
+   }
+ };
 
  _signIn = (e) => {
    e.preventDefault();
@@ -48,15 +53,19 @@ class SignUp extends Component {
        <form onSubmit={this._signUp}>
          <div>
            <label htmlFor="email">E-mail: </label>
-           <input onChange={this._handleChange} type="text" name="email" value={this.state.email} />
+           <input onChange={this._handleChange} type="email" name="email" value={this.state.email} required/>
          </div>
          <div>
            <label htmlFor="password">Password: </label>
-           <input onChange={this._handleChange} type="text" name="password" value={this.state.password} />
+           <input onChange={this._handleChange} type="password" name="password" value={this.state.password} required/>
          </div>
          <div>
            <label htmlFor="password">Confirm Password: </label>
-           <input onChange={this._handleChange} type="text" name="password_confirmation" value={this.state.password_confirmation} />
+           <input onChange={this._handleChange} type="password" name="password_confirmation" value={this.state.password_confirmation} required/>
+         </div>
+         <div>
+         {this.state.password === this.state.password_confirmation ? null : <p>Passwords do not match</p>}
+        
          </div>
          <div>
          <button className="button button-primary">Sign Up</button>

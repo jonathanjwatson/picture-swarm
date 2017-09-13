@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
 
 class PictureIndividualSignUpLogIn extends Component {
     render() {
@@ -8,7 +9,7 @@ class PictureIndividualSignUpLogIn extends Component {
             You must be signed in to download this picture:
             </div>
             <div>
-            <a href="/signUp" className="button button-default">Sign Up</a> <a href="/login" className="button button-primary">Log In</a>
+            <Link to="/signUp" className="button button-default">Sign Up</Link> <Link to="/signin" className="button button-primary">Log In</Link>
             </div>
             </div>
         );

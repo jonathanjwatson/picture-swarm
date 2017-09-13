@@ -59,7 +59,6 @@ class PictureList extends Component {
             <img className="cardImage" src={`${picture.url}`} alt={`${picture.title}`}/>
           <div className="card-block">
           <h4 className="card-title">{picture.title}</h4>
-
             <Link to={`/picture/${picture.id}`} className="button button-default">See More</Link> 
           </div>
           </div>

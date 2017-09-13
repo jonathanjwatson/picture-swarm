@@ -34,7 +34,7 @@ componentWillMount() {
       return axios.post("https://api.cloudinary.com/v1_1/pictureswarm/image/upload", formData, {
         transformRequest: [function (data, headers) {
             // Do whatever you want to transform the data
-            console.log(headers)
+            // console.log(headers)
             delete headers['access-token']
             delete headers['uid']
             delete headers['client']

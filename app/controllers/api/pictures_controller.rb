@@ -16,7 +16,8 @@ class Api::PicturesController < ApplicationController
     
       def show
         @Picture = Picture.find(params[:id])
-        @Picture = @Picture.tags
+        @Tags = @Picture.tags
+        @Response = [@Picture,@Tags]
         # @Tags = @Picture.tags
         # @PictureTag = PictureTag.where(picture_id: params[:id])
         # puts @PictureTag
@@ -25,7 +26,7 @@ class Api::PicturesController < ApplicationController
         # end
         # puts @Tags
         # Tag.where(id: @PictureTag.tag_id)
-        render json: @Picture
+        render json: @Response
       end
     
       def update

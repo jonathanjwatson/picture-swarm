@@ -2,7 +2,10 @@ class Api::PictureTagsController < ApplicationController
     def create
         puts JSON.parse(request.body.read)
         json_request = JSON.parse(request.body.read)
-        @picture_tag = PictureTag.create!(picture_id: json_request["picture_id"], tag_id: json_request["tag_id"])
+        @tag = Tag.find_or_create_by(name: json_request["tag_name"])
+        puts @tag[:id]
+        # @picture_tag = PictureTag.create(picture_id: json_request["picture_id"], tag_id: @tag[:id])
+        @picture_tag = PictureTag.where(picture_id: json_request["picture_id"], tag_id: @tag.id).first_or_create
         render json: @picture_tag
     end
 

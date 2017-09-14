@@ -16,7 +16,7 @@ class SearchBar extends Component {
     }
     render() {
         return (
-            <div className="row search-bar">
+            <div className="search-bar">
             <form onSubmit={(e) => this.props._handleSubmit(e, this.state.searchText)}>
             <div>
             <div className="label">

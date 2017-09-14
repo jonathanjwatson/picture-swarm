@@ -10,7 +10,8 @@ class PictureIndividual extends Component {
     this.state = {
       downloadPermission: false,
       picture: {}, 
-      userId: ''
+      userId: '',
+      tags: []
     };
   }
 
@@ -23,9 +24,9 @@ class PictureIndividual extends Component {
   _fetchpictures = async (pictureId) => {
     try {
       const response = await axios.get(`/api/pictures/${pictureId}`)
-      console.log(response)
-      await this.setState({picture: response.data});
-      
+      console.log(response.data[0])
+      await this.setState({picture: response.data[0]});
+      await this.setState({tags: response.data[1]})
       return response.data;
     }
     catch (err) {

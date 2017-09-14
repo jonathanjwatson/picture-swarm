@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :pictures
     resources :users
+    resources :picture_tags
   end
   # api_pictures_search_path returns /api/pictures#search
 end

@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import PictureIndividualDownloadButton from './PictureIndividualDownloadButton';
 import PictureIndividualSignUpLogIn from './PictureIndividualSignUpLogIn';
+import PictureIndividualTagBox from './PictureIndividualTagBox';
 
 class PictureIndividual extends Component {
   constructor() {
@@ -92,6 +93,9 @@ _checkAuth = async () => {
         </div>
         <div className="col-sm-1">
         </div>
+      </div>
+      <div className="row picture-show-row">
+      <PictureIndividualTagBox tags={this.state.tags}/>
       </div>
       </div>
     );

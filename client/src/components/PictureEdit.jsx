@@ -17,7 +17,7 @@ componentWillMount() {
 _fetchpicture = async (pictureId) => {
     try {
       const response = await axios.get(`/api/pictures/${pictureId}`)
-      await this.setState({picture: response.data});
+      await this.setState({picture: response.data[0]});
       console.log(response.data)
       return response.data;
     }

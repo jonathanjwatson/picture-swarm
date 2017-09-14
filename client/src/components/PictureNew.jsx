@@ -11,7 +11,8 @@ constructor() {
         createPermission: false,
         picture:{
         },
-        redirect: false
+        redirect: false,
+        uploadStatus:''
     }
 }
 componentWillMount() {
@@ -20,6 +21,7 @@ componentWillMount() {
 
   
   handleDrop = files => {
+    this.setState({uploadStatus: "Upload in progress"})
     // Push all the axios request promise into a single array
     const uploaders = files.map(file => {
       // Initial FormData
@@ -45,6 +47,7 @@ componentWillMount() {
           }],
         headers: { "X-Requested-With": "XMLHttpRequest"},
       }).then(response => {
+        this.setState({uploadStatus: "Upload successful!"})
         const data = response.data;
         const fileURL = data.secure_url // You should store this URL for future references in your app
         let uploadedPictureUrl = data.url
@@ -156,6 +159,7 @@ _checkAuth = async () => {
                 >
                 <p>Drop your files or click here to upload</p>
                 </Dropzone>
+                <p>{this.state.uploadStatus}</p>
                 <button className="button button-primary">Create New Picture</button>
                 </form>
             </div>

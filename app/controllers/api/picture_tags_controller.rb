@@ -8,10 +8,14 @@ class Api::PictureTagsController < ApplicationController
         @picture_tag = PictureTag.where(picture_id: json_request["picture_id"], tag_id: @tag.id).first_or_create
         render json: @picture_tag
     end
+    def delete
+        @picture_tag = PictureTag.find params[:id]
+        @picture_tag.destroy
+    end
 
-    # def picture_tag_params
-    #     params.require(:picture_tag).permit(:picture_id, :tag_id)
-    # end
+    def picture_tag_params
+        params.require(:picture_tag).permit(:picture_id, :tag_id)
+    end
     
 
 end

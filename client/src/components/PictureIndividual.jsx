@@ -12,7 +12,8 @@ class PictureIndividual extends Component {
       downloadPermission: false,
       picture: {}, 
       userId: '',
-      tags: []
+      tags: [],
+      createTagText: ''
     };
   }
 
@@ -65,6 +66,29 @@ _checkAuth = async () => {
   }
 
 }
+_handleTagChange = (e) => {
+  const attributeName = e.target.name;;
+  const attributeValue = e.target.value;
+  let createTagText = this.state.createTagText
+  createTagText = attributeValue;
+  this.setState({ createTagText })
+}
+_addTag = async () => {
+  const payload = {
+    picture_id: this.state.picture.id,
+    tag_name: this.state.createTagText
+  }
+  try {
+    console.log(payload)
+    const res = await axios.post(`/api/picture_tags`, payload)
+    await console.log(res.data)
+    return res.data
+  }
+  catch (err) {
+    await console.log(err)
+    return err.message
+  }
+}
 
   render() {
     const picture = this.state.picture;
@@ -99,10 +123,17 @@ _checkAuth = async () => {
       </div>
       <div className="row picture-add-row">
       {this.state.picture.user_id === this.state.userId ? 
-      <form>
+      <form onSubmit={this._addTag}>
         <label htmlFor="tag" />
-        <input type="text" placeholder="Add a new tag here" />
-        <input type="submit" value="Add your tag" />
+        <label htmlFor="createTagText">Add a new tag: </label>
+            <input 
+                type="text" 
+                onChange={this._handleTagChange} 
+                value={this.state.createTagText} 
+                name="createTagText"
+                placeholder="Add a new tag here"
+            />
+            <input type="submit" value="Add your tag" />
       </form>
       : null }
       </div>

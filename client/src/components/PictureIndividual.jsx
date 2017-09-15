@@ -144,7 +144,7 @@ _deleteTag = async (e, id) => {
         </div>
       </div>
       <div className="row picture-show-row">
-      <PictureIndividualTagBox tags={this.state.tags} _deleteTag={this._deleteTag}/>
+      <PictureIndividualTagBox tags={this.state.tags} _deleteTag={this._deleteTag} pictureUserId={this.state.picture.user_id} userId={this.state.userId}/>
       </div>
       <div className="row picture-add-row tagInput">
       {this.state.picture.user_id === this.state.userId ? 

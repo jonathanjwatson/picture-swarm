@@ -10,7 +10,8 @@ class PictureIndividualTagBox extends Component {
             Tags: 
                 {tags.map((tag, i) => (
                     <div className="tagRow" key={i}>
-                    <div className="button button-tag-delete" onClick={(e) => this.props._deleteTag(e, tag.id)}>x</div>
+                    {this.props.pictureUserId === this.props.userId ? <div className="button button-tag-delete" onClick={(e) => this.props._deleteTag(e, tag.id)}>x</div> : null}
+                    
                     <div className="button button-tag">{tag.name}</div> 
                     </div>
                 )

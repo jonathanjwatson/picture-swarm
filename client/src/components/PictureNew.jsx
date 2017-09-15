@@ -50,7 +50,7 @@ componentWillMount() {
         this.setState({uploadStatus: "Upload successful!"})
         const data = response.data;
         const fileURL = data.secure_url // You should store this URL for future references in your app
-        let uploadedPictureUrl = data.url
+        let uploadedPictureUrl = data.secure_url
         let picture = {...this.state.picture}
         picture.url = uploadedPictureUrl
         this.setState({picture})

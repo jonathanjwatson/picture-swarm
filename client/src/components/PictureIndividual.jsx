@@ -89,6 +89,31 @@ _addTag = async () => {
     return err.message
   }
 }
+_deleteTag = async (e, id) => {
+  const picture_id = this.state.picture.id
+  const tag_id = id;
+  console.log(picture_id)
+  console.log(tag_id)
+  const payload = {
+    picture_id,
+    tag_id
+  }
+  try {
+    // const res = await axios.delete(`/api/picture_tags/1`, {
+    //   params: {
+    //     picture_id,
+    //     tag_id
+    //   }
+    // })
+    console.log(payload)
+    const res = await axios.delete(`/api/picture_tags/1`, { data: payload })
+    await console.log(res.data)
+  }
+  catch (err) {
+    await console.log(err)
+    return err.message
+  }
+}
 
   render() {
     const picture = this.state.picture;
@@ -119,21 +144,21 @@ _addTag = async () => {
         </div>
       </div>
       <div className="row picture-show-row">
-      <PictureIndividualTagBox tags={this.state.tags}/>
+      <PictureIndividualTagBox tags={this.state.tags} _deleteTag={this._deleteTag}/>
       </div>
-      <div className="row picture-add-row">
+      <div className="row picture-add-row tagInput">
       {this.state.picture.user_id === this.state.userId ? 
       <form onSubmit={this._addTag}>
-        <label htmlFor="tag" />
-        <label htmlFor="createTagText">Add a new tag: </label>
+      <label htmlFor="createTagText" className="tagLabel">Add a new tag: </label>
             <input 
                 type="text" 
                 onChange={this._handleTagChange} 
                 value={this.state.createTagText} 
                 name="createTagText"
                 placeholder="Add a new tag here"
+                
             />
-            <input type="submit" value="Add your tag" />
+            <input type="submit" value="Add your tag" className="button button-primary"/>
       </form>
       : null }
       </div>

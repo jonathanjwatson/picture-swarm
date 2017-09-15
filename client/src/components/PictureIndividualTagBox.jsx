@@ -6,10 +6,13 @@ class PictureIndividualTagBox extends Component {
     render() {
         const tags = this.props.tags;
         return (
-            <div>
-                This is a list of all tags. 
+            <div className="tagBox">
+            Tags: 
                 {tags.map((tag, i) => (
-                    <p>{tag.name}</p>
+                    <div className="tagRow" key={i}>
+                    <div className="button button-tag-delete" onClick={(e) => this.props._deleteTag(e, tag.id)}>x</div>
+                    <div className="button button-tag">{tag.name}</div> 
+                    </div>
                 )
                 )}
             </div>

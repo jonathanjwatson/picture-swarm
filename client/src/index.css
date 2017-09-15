@@ -42,6 +42,21 @@ a:hover{
   color: white;
   border: none;
 }
+.button-tag{
+  background-color: gray;
+  color: white;
+  border: none;
+  margin-left:.25em;
+  margin-right: .25em;
+  font-size: 1em;
+  margin-left:-2px;
+}
+.button-tag-delete{
+  background-color:red;
+  color:white;
+  border:none;
+  font-size:1em;
+}
 .picture-show-row{
   padding-top:2em;
 }
@@ -71,4 +86,18 @@ a:hover{
 }
 .picture-list{
   margin:auto;
+}
+.tagBox{
+  padding-bottom:1em;
+}
+.tagInput input[type=text]{
+  height:2.85em;
+  margin-top:0px;
+  float: left;
+}
+.tagLabel {
+  float: left;
+}
+.tagRow {
+  display:inline-block;
 }

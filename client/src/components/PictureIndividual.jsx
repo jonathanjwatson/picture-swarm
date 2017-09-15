@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import PictureIndividualDownloadButton from './PictureIndividualDownloadButton';
 import PictureIndividualSignUpLogIn from './PictureIndividualSignUpLogIn';
 import PictureIndividualTagBox from './PictureIndividualTagBox';
@@ -13,7 +13,8 @@ class PictureIndividual extends Component {
       picture: {}, 
       userId: '',
       tags: [],
-      createTagText: ''
+      createTagText: '',
+      redirect: false
     };
   }
 
@@ -114,17 +115,42 @@ _deleteTag = async (e, id) => {
     return err.message
   }
 }
+_deletePicture = async (e) => {
+  e.preventDefault()
+  const picture_id = this.state.picture.id
+  try {
+    console.log(picture_id)
+    const res = await axios.delete(`/api/pictures/${picture_id}`)
+    const redirect = !this.state.redirect
+    this.setState({redirect})
+  }
+  
+  catch (err) {
+    await console.log(err)
+    return err.message
+  }
+}
 
   render() {
     const picture = this.state.picture;
+    if (this.state.redirect){
+     return <Redirect to="/" />
+   }
     return (
       <div>
       <div className="row picture-show-edit-row">
-      <div className="col-sm-11">
+      <div className="col-sm-10">
       </div>
-      <div className="col-sm-1">
+      <div className="col-sm-2">
       {this.state.picture.user_id === this.state.userId ? 
+      <div>
+      <div>
       <Link to={`/picture/${this.state.picture.id}/edit`}>Edit</Link>
+      </div>
+      <div>
+      <Link to={`/`} onClick={this._deletePicture}>Delete</Link>
+      </div>
+      </div>
       : null }
       </div>
       </div>

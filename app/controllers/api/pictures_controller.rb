@@ -38,7 +38,7 @@ class Api::PicturesController < ApplicationController
       def destroy
         @Picture = Picture.find(params[:id])
         @Picture.destroy
-        redirect_to pictures_path
+        render status: :ok
       end
     
       private

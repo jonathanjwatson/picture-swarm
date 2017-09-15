@@ -97,6 +97,15 @@ _checkAuth = async () => {
       <div className="row picture-show-row">
       <PictureIndividualTagBox tags={this.state.tags}/>
       </div>
+      <div className="row picture-add-row">
+      {this.state.picture.user_id === this.state.userId ? 
+      <form>
+        <label htmlFor="tag" />
+        <input type="text" placeholder="Add a new tag here" />
+        <input type="submit" value="Add your tag" />
+      </form>
+      : null }
+      </div>
       </div>
     );
   }

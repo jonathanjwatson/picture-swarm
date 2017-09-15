@@ -32,7 +32,8 @@ class GlobalNav extends Component {
     this.state = {
       user: {},
       loggedIn: false,
-      redirect: false
+      redirect: false,
+      createPermission: false
     };
   }
 
@@ -49,6 +50,9 @@ class GlobalNav extends Component {
       user: response.data.data,
       loggedIn: response.data.success
     });
+    let createPermission = this.state.createPermission
+    createPermission = response.data.data.uploader;
+    this.setState({createPermission})
   };
   
   _logOut = async () => {
@@ -64,6 +68,20 @@ class GlobalNav extends Component {
   render() {
     if (this.state.redirect) {
       return <Redirect to="/" />
+    }
+    if (this.state.loggedIn && this.state.createPermission) {
+      return (
+        <CustomNav>
+          <Link to="/">
+            <h1>Picture Swarm</h1>
+          </Link>
+          <div>
+            <span>Signed In As: {this.state.user.email}</span>
+            <a href="/new/picture">Upload New</a>
+            <a href="#" onClick={this._logOut}> Log Out </a>
+          </div>
+        </CustomNav>
+      );
     }
     if (this.state.loggedIn) {
       return (

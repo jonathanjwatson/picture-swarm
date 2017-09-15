@@ -107,7 +107,7 @@ _deleteTag = async (e, id) => {
     // })
     console.log(payload)
     const res = await axios.delete(`/api/picture_tags/1`, { data: payload })
-    await console.log(res.data)
+    window.location.reload();
   }
   catch (err) {
     await console.log(err)
@@ -156,6 +156,7 @@ _deleteTag = async (e, id) => {
                 value={this.state.createTagText} 
                 name="createTagText"
                 placeholder="Add a new tag here"
+                required
                 
             />
             <input type="submit" value="Add your tag" className="button button-primary"/>

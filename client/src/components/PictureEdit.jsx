@@ -83,7 +83,7 @@ _handleSubmit = (e) => {
                             placeholder="Edit Picture URL"
                         />
                 </div>
-                <button className="primary">Update Picture</button>
+                <button className="button button-primary">Update Picture</button>
                 </form>
             </div>
             </div>

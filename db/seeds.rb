@@ -18,6 +18,13 @@ admin.password_confirmation = 'password'
 admin.uploader = true
 admin.save
 
+test = User.new
+test.email = 'test@gmail.com'
+test.password = 'password1'
+test.password_confirmation = 'password1'
+test.uploader = true
+test.save
+
 sunset = Picture.create({title: "Sunset", user_id: admin.id, url: "https://static.pexels.com/photos/66997/pexels-photo-66997.jpeg",description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."})
 cabin  = Picture.create({title: "Cabin", user_id: admin.id, url: "https://static1.squarespace.com/static/54bff0d3e4b03c2b708fee78/54dce804e4b0208bec0e6939/5554fca4e4b01c8cda5a5d55/1499833385964/log+cabin+exterior.jpg", description: "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt."})
 leaves = Picture.create({title: "Fall Leaves", user_id: admin.id, url: "https://thefisheriesblog.files.wordpress.com/2013/09/28f16-free_fall_leaves_shutterstock_61538884_web.jpg", description: "Fall leaves are the best. Sunset. As they gently fall to the ground, magical things awaken."})

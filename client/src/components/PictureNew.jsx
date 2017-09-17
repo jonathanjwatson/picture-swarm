@@ -140,6 +140,7 @@ _checkAuth = async () => {
                             value={this.state.picture.title} 
                             name="title"
                             placeholder="Picture Title"
+                            required
                         />
                 </div>
                 <div className="form-field">
@@ -150,6 +151,7 @@ _checkAuth = async () => {
                             value={this.state.picture.description} 
                             name="description"
                             placeholder="Picture Description"
+                            required
                         />
                 </div>
                 <Dropzone 

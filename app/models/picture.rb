@@ -7,4 +7,5 @@ class Picture < ApplicationRecord
     has_many :picture_tags, dependent: :destroy
     has_many :tags, through: :picture_tags
     # has_one :picture_tags
+    validates :title, presence: true
 end

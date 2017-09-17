@@ -53,12 +53,23 @@ Using the Cloudinary API, images are uploaded to their service, and once success
 
 ## Wireframe
 
-
 ### Sketch wireframes
 
 ![Wireframe 1](https://res.cloudinary.com/pictureswarm/image/upload/v1505662048/Picture-Swarm-Homepage_wxvw3c.png)
 
 ![Wireframe 2](https://res.cloudinary.com/pictureswarm/image/upload/v1505662112/PictureSwarm-ShowPage_po1tjx.png)
+
+## ERDs
+
+For this project, I used three models and one join table. My models were: 
+
+* Users
+* Pictures
+* Tags
+
+with a join table called Picture_tags to share the relationship between pictures and tags. 
+
+![ERD](https://res.cloudinary.com/pictureswarm/image/upload/v1505664012/2017-09-17_11.54.41_yximny.jpg)
 
 <!-- ## Future Development
 

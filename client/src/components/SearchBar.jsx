@@ -17,27 +17,27 @@ class SearchBar extends Component {
     render() {
         return (
             <div className="search-bar">
-            <form onSubmit={(e) => this.props._handleSubmit(e, this.state.searchText)}>
-            <div>
-            <div className="label">
-              <label htmlFor="email"></label>
-            </div>
-            <div className="row">
-                <div className="col-sm-8">
-                <input 
-                    type="text" 
-                    onChange={this._handleChange} 
-                    value={this.state.searchText} 
-                    name="email"
-                    placeholder="Search for an image . . ."
-                />
-                </div>
-                <div>
-                <input type="submit" className="button button-primary" value="Search"/>
-                </div>
-            </div>
-          </div>
-          </form>
+                <form onSubmit={(e) => this.props._handleSubmit(e, this.state.searchText)}>
+                    <div>
+                        <div className="label">
+                            <label htmlFor="email"></label>
+                        </div>
+                        <div className="row">
+                            <div className="col-sm-8">
+                                <input 
+                                    type="text" 
+                                    onChange={this._handleChange} 
+                                    value={this.state.searchText} 
+                                    name="email"
+                                    placeholder="Search for an image . . ."
+                                />
+                            </div>
+                            <div>
+                                <input type="submit" className="button button-primary" value="Search"/>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
         );
     }

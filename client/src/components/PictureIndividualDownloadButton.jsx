@@ -4,7 +4,7 @@ class PictureIndividualDownloadButton extends Component {
     render() {
         return (
             <div>
-            <a href={`${this.props.url}`} download className="button button-default">Download Image</a>
+                <a href={`${this.props.url}`} download className="button button-default">Download Image</a>
             </div>
         );
     }

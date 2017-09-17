@@ -28,7 +28,6 @@ class PictureList extends Component {
       await this.setState({error: err.message})
       return err.message
     }
-    
   }
   _handleSubmit = (e, searchText) => {
       e.preventDefault();
@@ -48,23 +47,24 @@ class PictureList extends Component {
     if (this.state.error){
       return <div>{this.state.error}</div>
     }
-    return (
-      <div>
-      <div className="row">
-        <SearchBar _handleSubmit={this._handleSubmit}/>
-        </div>
-      <div className="row picture-list">
-        {this.state.pictures.map((picture, i) => (
-          <div className="card" key={i}>
-            <img className="cardImage" src={`${picture.url}`} alt={`${picture.title}`}/>
-          <div className="card-block">
-          <h4 className="card-title">{picture.title}</h4>
-            <Link to={`/picture/${picture.id}`} className="button button-default">See More</Link> 
+    return ( 
+        <div>
+          <div className="row">
+            <SearchBar _handleSubmit={this._handleSubmit}/>
           </div>
+          <div className="row picture-list">
+                {this.state.pictures.map((picture, i) => (
+                    <div className="card" key={i}>
+                      <img className="cardImage" src={`${picture.url}`} alt={`${picture.title}`}/>
+                      <div className="card-block">
+                        <h4 className="card-title">{picture.title}</h4>
+                        <Link to={`/picture/${picture.id}`} className="button button-default">See More</Link>
+                      </div>
+                    </div>
+                ))}
+                
           </div>
-        ))}
         </div>
-      </div>
     );
   }
 }

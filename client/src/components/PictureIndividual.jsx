@@ -137,59 +137,58 @@ _deletePicture = async (e) => {
      return <Redirect to="/" />
    }
     return (
-      <div>
-      <div className="row picture-show-edit-row">
-      <div className="col-sm-10">
-      </div>
-      <div className="col-sm-2">
+      
+<div>
+  <div className="row picture-show-edit-row">
+    <div className="col-sm-10"></div>
+    <div className="col-sm-2">
       {this.state.picture.user_id === this.state.userId ? 
+      
       <div>
-      <div>
-      <Link to={`/picture/${this.state.picture.id}/edit`}>Edit</Link>
-      </div>
-      <div>
-      <Link to={`/`} onClick={this._deletePicture}>Delete</Link>
-      </div>
+        <div>
+          <Link to={`/picture/${this.state.picture.id}/edit`}>Edit</Link>
+        </div>
+        <div>
+          <Link to={`/`} onClick={this._deletePicture}>Delete</Link>
+        </div>
       </div>
       : null }
-      </div>
-      </div>
-      <div className="row picture-show-row">
-      <div className="col-sm-1">
-      </div>
-      <div className="col-sm-4">
-        <img className="picture-show-image" src={this.state.picture.url} alt={this.state.picture.title} />
-      </div>
-      <div className="col-sm-7 picture-show-description">
-        <h1>{this.state.picture.title}</h1>
-        <p>{this.state.picture.description}</p>
-        {this.state.downloadPermission ? <PictureIndividualDownloadButton {...picture} /> : <PictureIndividualSignUpLogIn />}
-        
-        </div>
-        <div className="col-sm-1">
-        </div>
-      </div>
-      <div className="row picture-show-row">
-      <PictureIndividualTagBox tags={this.state.tags} _deleteTag={this._deleteTag} pictureUserId={this.state.picture.user_id} userId={this.state.userId}/>
-      </div>
-      <div className="row picture-add-row tagInput">
+    </div>
+  </div>
+  <div className="row picture-show-row">
+    <div className="col-sm-1"></div>
+    <div className="col-sm-4">
+      <img className="picture-show-image" src={this.state.picture.url} alt={this.state.picture.title} />
+    </div>
+    <div className="col-sm-7 picture-show-description">
+      <h1>{this.state.picture.title}</h1>
+      <p>{this.state.picture.description}</p>
+        {this.state.downloadPermission ? 
+      <PictureIndividualDownloadButton {...picture} /> : 
+      <PictureIndividualSignUpLogIn />}
+    </div>
+    <div className="col-sm-1"></div>
+  </div>
+  <div className="row picture-show-row">
+    <PictureIndividualTagBox tags={this.state.tags} _deleteTag={this._deleteTag} pictureUserId={this.state.picture.user_id} userId={this.state.userId}/>
+  </div>
+  <div className="row picture-add-row tagInput">
       {this.state.picture.user_id === this.state.userId ? 
-      <form onSubmit={this._addTag}>
+    <form onSubmit={this._addTag}>
       <label htmlFor="createTagText" className="tagLabel">Add a new tag: </label>
-            <input 
+      <input 
                 type="text" 
                 onChange={this._handleTagChange} 
                 value={this.state.createTagText} 
                 name="createTagText"
                 placeholder="Add a new tag here"
-                required
-                
+                required 
             />
-            <input type="submit" value="Add your tag" className="button button-primary"/>
-      </form>
+      <input type="submit" value="Add your tag" className="button button-primary"/>
+    </form>
       : null }
-      </div>
-      </div>
+  </div>
+</div>
     );
   }
 }

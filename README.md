@@ -11,40 +11,47 @@
 ## Overview
 For my capstone project, I created a user-generated stock photography site.
 
-When users arrive on the site, they can browse through photos or search for a specific item. 
+When users arrive on the site, they can browse through photos or search for a specific item. If a user has an uploader account, he/she can add new pictures, which upload to the Clouindary API service and storage. Once the image is created, the uploader is able to edit or delete the image, as well as add new tags, and remove those tags. At each step of the process, Devise Auth tokens are used to ensure that only the uploader has access to these site elements. 
 
-When players come to the site, they are greeted with a deal button which, when clicked, deals four cards at random. Two cards are the player's cards and are shown face up. Two cards are the dealer's cards, but only one is shown face up.
+### User Accounts
 
-### Game Play
+The user tiers are as follows:
+* Not Signed In
+* Basic User
+* Uploader
+* Admin (Future Development)
 
-The player may either hit or stay. Hitting deals another random card. Staying keeps the number of points they have. Point totals are displayed below the respective hands.
+Even if a user is not signed in, he/she can come to the site, see the available photos, and search through the photos. At the point when a user goes to an individual photo's show page, he/she is invited to sign up or log in before downloading the high-res image. 
 
-Once the player finishes, the dealer plays. The dealer automatically takes cards until it reaches 17 or higher. 
+Once signed in with a basic user account, the user may download images at will. 
 
-### Scoring
-If either the player, or the dealer reaches 21 with their initial 2 cards, it is known as a blackjack, and play stops immediately. 
+If a user has an Uploader account, he/she is able to create new photos via image upload, edit them, delete them, and add the appriate tags, or delete tags if necessary. 
 
-A hand totalling 22 points or higher is known as a bust, and is an immediate loss. 
+Though the admin view does not currently exist, future development plans would allow an admin to go in, modify a user's account type, and see download data for the pictures.
+
+### Search
+
+Currently search operates through title and description using built in functionality from Active Record and PostgreSQL. Fuzzy search options are coming to future versions using the gem textacular. 
+
+### Image Upload
+Using the Cloudinary API, images are uploaded to their service, and once successfully uploaded, the secure URL is stored on the object itself. Future development includes using Cloudinary's API to return low-res thumbnail previews only when not signed in, in addition to watermarking images for not signed in. 
 
 ## Technologies Used
 
-* Languages - HTML5, CSS3, Javascript, jQuery
-* Design - MockingBird, Materialize
+* HTML5
+* CSS3
+* Bootstrap
+* Javascript
+* React
+* Rails
+* Devise
+* Postgresql
+* Design - Sketch, Bootstrap
 * Project Planning & User Stories - Trello
 * Visual Studio Code
 
-## Features
-
-* Deal button deals cards AND resets game
-* Customizable background using CSS Variables
-* Sound effects for buttons and win/loss
-* Win/Loss counter 
-* Responsive Design
-* AI (Player Vs. Computer/Dealer)
 
 ## Wireframe
-
-
 
 
 ### Sketch wireframes
@@ -53,9 +60,8 @@ A hand totalling 22 points or higher is known as a bust, and is an immediate los
 
 ![Wireframe 2](https://res.cloudinary.com/pictureswarm/image/upload/v1505662112/PictureSwarm-ShowPage_po1tjx.png)
 
-## Future Development
+<!-- ## Future Development
 
-* Create a Split Hand feature when player has two cards of the same value. 
-* ~~Create a betting option where player can wager money and win or lose.~~ - DONE
-* Updating betting for variable bet options. 
-* Updating betting for interactive betting (doubling a bet on first two cards).
+*
+*
+* -->
